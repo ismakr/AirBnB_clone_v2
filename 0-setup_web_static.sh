@@ -13,6 +13,6 @@ echo "<html>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
-new_str="location\ =\ \//hbnb_static\ {\n\t\talias\ \/data\/web_static\/current\/\n\t};"
-sudo sed -i "s/location\ \//$new_str/" /etc/nginx/sites-available/default
+new_str="location = \/hbnb_static {\n\t\talias \/data\/web_static\/current\/\n\t};\n"
+sudo sed -i "s/location \/ {/$new_str/" /etc/nginx/sites-available/default
 sudo service nginx restart
