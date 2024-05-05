@@ -9,7 +9,7 @@ def do_pack():
     local('sudo mkdir -p versions')
     foltime = datetime.now().strftime('%Y%m%d%H%M%S')
     fl = "versions/web_static_{foltime}.tgz"
-    com = local('ftar -cvzf {fl} web_static')
+    com = local(f"sudo tar -cvzf {fl} web_static")
     if com.succeeded:
         return fl
     else:
