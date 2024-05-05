@@ -7,7 +7,7 @@ env.hosts = ['100.25.45.81', '100.26.227.36']
 def do_deploy(archive_path):
     """distributes an archive to the web servers"""
     try:
-        put(archive_path, '/tmp/')
+        put(archive_path, "/tmp/")
         archive_dir = archive_path.split('.')[0].split('/')[1]
         archive_dir_path = f"/data/web_static/releases/{archive_dir}/"
         tmp_archive_file = "/tmp/" + archive_path.split('/')[1]
