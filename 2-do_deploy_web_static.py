@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 """distributes an archive to the web servers"""
 from fabric.api import *
+import os.path
 env.hosts = ['100.25.45.81', '100.26.227.36']
 
 
 def do_deploy(archive_path):
     """distributes an archive to the web servers"""
+    if os.path.isfile(archive_path) is False:
+        return False
     try:
         put(archive_path, "/tmp/")
         archive_dir = archive_path.split('.')[0].split('/')[1]
