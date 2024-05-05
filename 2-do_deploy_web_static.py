@@ -11,16 +11,16 @@ def do_deploy(archive_path):
         return False
     try:
         archive_dir = f"{archive_path.split('.')[0].split('/')[1]}"
-        archive_dir_path = f"/data/web_static/releases/{archive_dir}/"
+        archive_dir_path = f"/data/web_static/releases/{archive_dir}"
         tmp_archive_file = "/tmp/" + f"{archive_path.split('/')[1]}"
         put(archive_path, "/tmp/")
-        run(f"mkdir -p {archive_dir_path}")
-        run(f"tar -xzf {tmp_archive_file} -C {archive_dir_path}")
+        run(f"mkdir -p {archive_dir_path}/")
+        run(f"tar -xzf {tmp_archive_file} -C {archive_dir_path}/")
         run(f"rm {tmp_archive_file}")
-        run(f"mv {archive_dir_path}web_static/* {archive_dir_path}")
-        run(f"rm -rf {archive_dir_path}web_static")
+        run(f"mv {archive_dir_path}/web_static/* {archive_dir_path}/")
+        run(f"rm -rf {archive_dir_path}/web_static")
         run(f"rm rf /data/web_static/current")
-        run(f"ln -s {archive_dir_path} /data/web_static/current")
+        run(f"ln -s {archive_dir_path}/ /data/web_static/current")
         return True
     except():
         return False
