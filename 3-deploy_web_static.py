@@ -2,7 +2,7 @@
 """creates and distributes an archive to your web servers,
 using the function deploy"""
 from fabric.api import *
-import os.path
+from os.path import exists
 env.hosts = ['100.25.45.81', '100.26.227.36']
 
 
@@ -20,7 +20,7 @@ def do_pack():
 
 def do_deploy(archive_path):
     """distributes an archive to the web servers"""
-    if os.path.isfile(archive_path) is False:
+    if exists(archive_path) is False:
         return False
     try:
         archive_dir = f"{archive_path.split('.')[0].split('/')[1]}"
