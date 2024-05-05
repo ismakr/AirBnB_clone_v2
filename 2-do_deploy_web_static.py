@@ -14,13 +14,13 @@ def do_deploy(archive_path):
         archive_dir_path = f"/data/web_static/releases/{archive_dir}"
         tmp_archive_file = "/tmp/" + f"{archive_path.split('/')[1]}"
         put(archive_path, "/tmp/")
-        run(f"mkdir -p {archive_dir_path}/")
-        run(f"tar -xzf {tmp_archive_file} -C {archive_dir_path}/")
-        run(f"rm {tmp_archive_file}")
-        run(f"mv {archive_dir_path}/web_static/* {archive_dir_path}/")
-        run(f"rm -rf {archive_dir_path}/web_static")
-        run(f"rm rf /data/web_static/current")
-        run(f"ln -s {archive_dir_path}/ /data/web_static/current")
+        run(f"sudo mkdir -p {archive_dir_path}/")
+        run(f"sudo tar -xzf {tmp_archive_file} -C {archive_dir_path}/")
+        run(f"sudo rm {tmp_archive_file}")
+        run(f"sudo mv {archive_dir_path}/web_static/* {archive_dir_path}/")
+        run(f"sudo rm -rf {archive_dir_path}/web_static")
+        run(f"sudo rm -rf /data/web_static/current")
+        run(f"sudo ln -s {archive_dir_path}/ /data/web_static/current")
         return True
     except():
         return False
