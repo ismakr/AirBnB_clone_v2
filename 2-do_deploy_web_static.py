@@ -10,10 +10,10 @@ def do_deploy(archive_path):
     if os.path.isfile(archive_path) is False:
         return False
     try:
-        put(archive_path, "/tmp/")
-        archive_dir = archive_path.split('.')[0].split('/')[1]
+        archive_dir = f"{archive_path.split('.')[0].split('/')[1]}"
         archive_dir_path = f"/data/web_static/releases/{archive_dir}/"
         tmp_archive_file = "/tmp/" + f"{archive_path.split('/')[1]}"
+        put(archive_path, "/tmp/")
         run(f"mkdir -p {archive_dir_path}")
         run(f"tar -xzf {tmp_archive_file} -C {archive_dir_path}")
         run(f"rm {tmp_archive_file}")
