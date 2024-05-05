@@ -15,7 +15,7 @@ def do_deploy(archive_path):
         run(f"tar -xzf {tmp_archive_file} -C {archive_dir_path}")
         run(f"rm {tmp_archive_file}")
         run(f"mv {archive_dir_path}web_static/* {archive_dir_path}")
-        run(f"rm -rf {archive_dir_path}web_static/")
+        run(f"rm -rf {archive_dir_path}web_static")
         run(f"rm rf /data/web_static/current")
         run(f"ln -s {archive_dir_path} /data/web_static/current")
         return True
