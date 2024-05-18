@@ -8,5 +8,5 @@ def hello():
     return "Hello HBNB!"
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     app.run(strict_slashes=False)
