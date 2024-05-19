@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def hello():
+    """route"""
     return "Hello HBNB!"
 
 
@@ -20,7 +21,7 @@ def hbnb():
 
 @app.route("/c/<text>", strict_slashes=False)
 def c_text(text):
-    """route hbnb"""
+    """route c"""
     return f"C is {text}"
 
 
